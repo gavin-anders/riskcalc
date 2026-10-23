@@ -1,0 +1,43 @@
+[project]
+name = "riskcalc"
+version = "0.1.0"
+description = "Evaluate vulnerability risk from vulnerability data plus environmental/business context."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+keywords = ["security", "vulnerability", "risk", "cvss", "epss", "scoring"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Information Technology",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Security",
+    "Typing :: Typed",
+]
+dependencies = [
+    "click>=8",
+    "pydantic>=2",
+    "pyyaml>=6.0.3",
+]
+
+[project.scripts]
+riskcalc = "riskcalc.cli:main"
+
+[dependency-groups]
+dev = [
+    "black>=26.5.1",
+    "pytest",
+]
+
+[build-system]
+requires = ["uv_build>=0.12,<0.13"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-name = "riskcalc"
+module-root = "src"

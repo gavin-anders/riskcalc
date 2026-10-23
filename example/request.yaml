@@ -1,0 +1,52 @@
+vulnerability:
+  title: "Example Vulnerability"
+  cvss:
+    version: 3
+    score: 7.0
+    vector: "AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+  cve_ids:
+    - "CVE-2023-12345"
+    - "CVE-2023-67890"
+
+contexts:
+  threat_intel:
+    epss: 0.9
+    kev: true
+    exploit_available: true
+
+  environment:
+    deployment_environment: development
+    privileged_network_location: true
+
+  control:
+    edr_present: true
+    waf_present: true
+    network_segmentation: true
+    mfa_enforced: true
+    firewall: true
+
+  business:
+    asset_criticality: high
+    business_impact: critical
+    data_sensitivity: confidential
+    customer_facing: true
+    revenue_generating: true
+    regulatory_scope: true
+    safety_critical: true
+      
+  remediation:
+    patch_available: true
+    workaround_available: true
+    remediation_complexity: high
+
+  exposure:
+    internet_access: true
+    reachable_from_public: true
+    reachable_from_user_networks: true
+    reachable_from_untrusted_networks: true
+    authentication_boundary_crossed: true
+
+
+
+
+ 

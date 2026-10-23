@@ -1,0 +1,39 @@
+name: Minimal Risk Profile
+version: "1.0"
+
+scoring:
+  ratings:
+    informational: 0
+    low: 20
+    medium: 40
+    high: 70
+    critical: 90
+
+vulnerability:
+  cvss:
+    weight: 30
+
+contexts:
+  threat_intel:
+    kev:
+      true: 20
+      false: 0
+
+  exposure:
+    internet_access:
+      true: 20
+      false: 0
+
+  business:
+    asset_criticality:
+      values:
+        low: 0
+        medium: 5
+        high: 10
+        critical: 15
+
+  # Contexts this profile does not weight. They must still be present; an
+  # empty mapping leaves every field at its zero-contribution default.
+  environment: {}
+  control: {}
+  remediation: {}

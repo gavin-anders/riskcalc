@@ -1,0 +1,142 @@
+name: Threat Led Risk Profile
+version: "1.0"
+
+scoring:
+  ratings:
+    informational: 0
+    low: 20
+    medium: 40
+    high: 70
+    critical: 90
+
+vulnerability:
+  cvss:
+    weight: 25
+
+contexts:
+  threat_intel:
+    epss:
+      - gte: 0.90
+        score: 25
+      - gte: 0.70
+        score: 18
+      - gte: 0.40
+        score: 10
+
+    kev:
+      true: 30
+      false: 0
+
+    exploit_available:
+      true: 22
+      false: 0
+
+  environment:
+    deployment_environment:
+      values:
+        development: 0
+        test: 1
+        staging: 2
+        pre_production: 4
+        production: 8
+        disaster_recovery: 6
+        unknown: 1
+
+    privileged_network_location:
+      true: 8
+      false: 0
+
+  exposure:
+    internet_access:
+      true: 18
+      false: 0
+
+    reachable_from_public:
+      true: 15
+      false: 0
+
+    reachable_from_user_networks:
+      true: 5
+      false: 0
+
+    reachable_from_untrusted_networks:
+      true: 12
+      false: 0
+
+    authentication_boundary_crossed:
+      true: 8
+      false: 0
+
+  business:
+    asset_criticality:
+      values:
+        low: 0
+        medium: 3
+        high: 7
+        critical: 12
+
+    business_impact:
+      values:
+        low: 0
+        medium: 3
+        high: 7
+        critical: 12
+
+    data_sensitivity:
+      values:
+        public: 0
+        internal: 2
+        confidential: 5
+        restricted: 8
+
+    customer_facing:
+      true: 4
+      false: 0
+
+    revenue_generating:
+      true: 4
+      false: 0
+
+    regulatory_scope:
+      true: 4
+      false: 0
+
+    safety_critical:
+      true: 8
+      false: 0
+
+  control:
+    edr_present:
+      true: -5
+      false: 0
+
+    waf_present:
+      true: -5
+      false: 0
+
+    network_segmentation:
+      true: -6
+      false: 0
+
+    mfa_enforced:
+      true: -5
+      false: 0
+
+    firewall:
+      true: -3
+      false: 0
+
+  remediation:
+    patch_available:
+      true: -2
+      false: 4
+
+    mitigation_available:
+      true: -3
+      false: 3
+
+    remediation_complexity:
+      values:
+        low: 0
+        medium: 2
+        high: 5
