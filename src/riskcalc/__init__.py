@@ -19,7 +19,7 @@ from riskcalc.utils import (
 )
 
 try:
-    __version__ = version("vulnflow-riskcalc")
+    __version__ = version("riskcalc")
 except PackageNotFoundError:
     __version__ = "0.0.0+unknown"
 
